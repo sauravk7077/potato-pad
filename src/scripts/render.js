@@ -2,7 +2,7 @@ const remote = require('electron').remote;
 const fs = require('fs');
 const {createWindow} = remote.require('./index');
 const path = require('path');
-const { dialog, ipcRenderer } = require('electron');
+const { dialog, ipcRenderer, ipcMain } = require('electron');
 const { resolve } = require('path');
 let filepath = "";
 // Event Listeners
@@ -10,6 +10,9 @@ let filepath = "";
 document.getElementById('open').addEventListener('click', openFile);
 document.getElementById('save').addEventListener('click', saveFile);
 
+ipcRenderer.on('information-dialog-selection', (event, index)=>{
+    console.log(index);
+});
 
 
 let title = document.getElementById('title');
@@ -18,13 +21,13 @@ title.innerText = "Untitled";
 
 // Functions
 
-function openFile() {
+async function openFile() {
     console.log('File opened');
     wantToSave();
 }
 
 function newFile() {
-
+    
 }
 
 async function saveFile() {
@@ -48,15 +51,10 @@ function isFileSaved() {
 }
 
 
-async function wantToSave() {
+function wantToSave() {
     let saved = isFileSaved();
-    if(!saved){
-        let options  = {
-            buttons: ["Yes","No","Cancel"],
-            message: "Do you really want to quit?"
-           }
-        responce = await remote.dialog.showMessageBox(remote.getCurrentWindow, options);
-        console.log(responce);
+    if(!saved && document.getElementById('textContainer').value=='' && document.getElementById('title').innerText =='Untitled'){
+        ipcRenderer.send('save-current-file');
     }
 }
 

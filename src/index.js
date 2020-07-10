@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcRenderer, dialog, ipcMain } = require('electron');
+const { app, BrowserWindow, dialog, ipcMain } = require('electron');
 const path = require('path');
 const menuTemp = require('./scripts/menuTemplate');
 
@@ -53,11 +53,10 @@ app.on('activate', () => {
 ipcMain.on('save-current-file' , (event)=>{
   let options  = {
     buttons: ["Yes","No","Cancel"],
-    message: "Do you really want to quit?"
+    message: "Do you want save this file?"
    }
-   let response = dialog.showMessageBox(options, (value)=>{
-     event.sender.send('information-dialog-selection', value);
-   });
+    responce = await dialog.showMessageBox(options);
+    
 });
 
 
