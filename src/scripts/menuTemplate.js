@@ -1,3 +1,5 @@
+//var { getData } = require('./all_functions');
+
 var menu = [
     {
         label: "File",
@@ -12,7 +14,8 @@ var menu = [
         },
         {
             label: "Save",
-            accelerator: "CmdOrCtrl+S"
+            accelerator: "CmdOrCtrl+S",
+            // click: getData()
         },
         {
             label: "Save As",

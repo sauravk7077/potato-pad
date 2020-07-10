@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require('electron');
+const { app, BrowserWindow, ipcRenderer, dialog, ipcMain } = require('electron');
 const path = require('path');
 const menuTemp = require('./scripts/menuTemplate');
 
@@ -12,13 +12,13 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    frame: false,
     webPreferences:{
       nodeIntegration: true,
+      enableRemoteModule: true
       //devTools: false
     }
   });
-  const menu = Menu.buildFromTemplate(menuTemp);
-  Menu.setApplicationMenu(menu);
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
@@ -49,3 +49,19 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+ipcMain.on('save-current-file' , (event)=>{
+  let options  = {
+    buttons: ["Yes","No","Cancel"],
+    message: "Do you really want to quit?"
+   }
+   let response = dialog.showMessageBox(options, (value)=>{
+     event.sender.send('information-dialog-selection', value);
+   });
+});
+
+
+
+module.exports = {
+  createWindow: createWindow
+}

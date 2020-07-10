@@ -7,7 +7,50 @@
     <script defer src="./scripts/render.js"></script>
   </head>
   <body>
+    <nav role="navigation">
+        <ul class="menu">
+            <li>
+                <a href='#'>File</a>
+                <ul class='dropdown'>
+                    <li id="new"><a href='#' >New</a></li>
+                    <li id="open"><a href='#' >Open</a></li>
+                    <li id="save"><a href='#' >Save</a></li>
+                    <li id="save-as"><a href='#' >Save As</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href='#'>Edit</a>
+                <ul class='dropdown'>
+                    <li id="undo"><a href='#' >Undo</a></li>
+                    <li id="cut"><a href='#' >Cut</a></li>
+                    <li id="paste"><a href='#' >Paste</a></li>
+                    <li id="delete"><a href='#' >Delete</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href='#'>Format</a>
+                <ul class='dropdown'>
+                    <li id="fonts"><a href='#' >Fonts</a></li>
+                    <li id="word-wrap"><a href='#' >Word Wrap</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href='#'>View</a>
+                <ul class='dropdown'>
+                    <li id="zoom-in"><a href='#' >Zoom In</a></li>
+                    <li id="zoom-out"><a href='#' >Zoom Out</a></li>
+                    <li id="reset-zoom"><a href='#' >Reset Zoom</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href='#'>Help</a>
+                <ul class='dropdown'>
+                    <li id="about"><a href='#'>About</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
     <h4 id="title" class="unselectable"></h4>
-    <textarea id="textContainer"></textarea>
+    <textarea id="textContainer" spellcheck="false"></textarea>
   </body>
 </html>
