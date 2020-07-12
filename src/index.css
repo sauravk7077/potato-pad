@@ -4,9 +4,9 @@ body {
   display: flex;
   overflow: hidden;
   flex-direction: column;
-  background-color: rgba(255, 187, 0, 0.8);
-  color: #fff;
-  text-shadow: 1px 1px 1px black;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000;
+  margin: 0;
 }
 
 #textContainer{
@@ -16,8 +16,10 @@ body {
   z-index: 1;
 }
 h4{
+  margin-left: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
+  font-size: 1em;
 }
 
 .unselectable {
@@ -92,4 +94,45 @@ ul li ul li {
     clear: both;
   width: 100%;
 
+}
+
+
+/* Top */
+
+.grid{
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  height: 40px;
+  align-items: center;
+}
+
+.top-buttons img{
+  width: 16px;
+}
+
+.top-buttons{
+  display: inline-block;
+  width: 40px;
+  height: 30px;
+  padding-top: 10px
+  
+}
+.top-buttons:hover{
+  background-color: grey;
+}
+.top-buttons#close:hover{
+  background-color:red;
+}
+.buttons-group {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  grid-column: 9/11;
+}
+
+#window-title{
+  grid-column: 1/3;
+  text-align: left;
+  padding-left: 10px;
 }

@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <title>Potato Pad</title>
     <link rel="stylesheet" href="index.css">
+    <script defer src="./scripts/top.js"></script>
     <script defer src="./scripts/render.js"></script>
   </head>
   <body>
+    <header class="grid">
+        <div id="window-title" class="unselectable">
+            
+        </div>
+        <div class="buttons-group">
+            <div class="top-buttons" id="minimize"><img src="./assets/minimize.svg" /></div>
+            <div class="top-buttons" id="maximize"><img src="./assets/screen.svg" /></div>
+            <div class="top-buttons" id="close"><img src="./assets/close-button.svg" /></div>
+        </div>
+    </header>
     <nav role="navigation">
         <ul class="menu">
             <li>
@@ -53,5 +64,8 @@
     </nav>
     <h4 id="title" class="unselectable"></h4>
     <textarea id="textContainer" spellcheck="false"></textarea>
+
+    <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/google" title="Google">Google</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+    <!-- Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
   </body>
 </html>

@@ -1,4 +1,4 @@
-const remote = require('electron').remote;
+
 const fs = require('fs');
 const {createWindow} = remote.require('./index');
 const path = require('path');
@@ -9,7 +9,7 @@ let filepath;
 
 // DOM Elements
 
-let title = document.getElementById('title');
+
 let textContainer = document.getElementById('textContainer');
 
 
@@ -41,7 +41,7 @@ async function openFile() {
     filepath = value.filePaths[0];
     textContainer.value = "";
     let rs = fs.createReadStream(filepath);
-    title.innerText = path.win32.basename(filepath);
+    setWindowTitle(path.win32.basename(filepath));
     rs.on('data', (d) => {
         textContainer.value += d;
     });
@@ -80,7 +80,7 @@ async function save() {
 
 
 async function saveFile() {
-    title.innerText = path.win32.basename(filepath);
+    setWindowTitle(path.win32.basename(filepath));
     let ws = fs.createWriteStream(filepath);
     ws.write(document.getElementById('textContainer').value);
     ws.close();
@@ -154,20 +154,24 @@ function paste() {
 }
 
 function deleteSelected() {
-    console.log('wr');
     textContainer.setRangeText('',textContainer.selectionStart, textContainer.selectionEnd);
 }
 
 // Format Functions
 
 function changeWordWrap() {
-    textContainer.toggleAttribute('word-wrap');
+    textContainer.style.wordWrap = "break-word";
+}
+
+function setWindowTitle(title='Untitled') {
+    let titlediv = document.getElementById('title');
+    let windowTitle = document.getElementById('window-title');
+    titlediv.innerText = title;
+    windowTitle.innerText = titlediv.innerText + " - Potato Pad";
 }
 
 
-
-
-title.innerText = "Untitled";
+setWindowTitle();
 textContainer.addEventListener('blur',()=>{
     textContainer.focus();
 });
