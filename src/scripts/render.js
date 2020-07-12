@@ -161,7 +161,7 @@ function deleteSelected() {
 
 function changeWordWrap() {
     if(textContainer.style.overflowWrap == 'break-word')
-        textContainer.style.wordWrap = "normal";
+        textContainer.style.overflowWrap = "normal";
     else
         textContainer.style.wordWrap = "break-word";
 }

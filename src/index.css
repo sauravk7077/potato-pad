@@ -4,7 +4,6 @@ body {
   display: flex;
   overflow: hidden;
   flex-direction: column;
-  background-color: rgba(255, 255, 255, 0.8);
   color: #000;
   margin: 0;
 }
