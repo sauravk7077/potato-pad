@@ -160,7 +160,10 @@ function deleteSelected() {
 // Format Functions
 
 function changeWordWrap() {
-    textContainer.style.wordWrap = "break-word";
+    if(textContainer.style.overflowWrap == 'break-word')
+        textContainer.style.wordWrap = "normal";
+    else
+        textContainer.style.wordWrap = "break-word";
 }
 
 function setWindowTitle(title='Untitled') {
