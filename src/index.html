@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <title>Potato Pad</title>
-    <link rel="stylesheet" href="index.css">
+    <!-- Fontsawesome -->
+    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <script src="../node_modules/@fortawesome/fontawesome-free/js/all.js"></script>
+
+    <link rel="stylesheet" href="index.css">    
     <script defer src="./scripts/top.js"></script>
     <script defer src="./scripts/render.js"></script>
   </head>
@@ -12,9 +16,9 @@
         <div id="window-title">
         </div>
         <div class="buttons-group">
-            <div class="top-buttons" id="minimize"><img src="./assets/minimize.svg" /></div>
-            <div class="top-buttons" id="maximize"><img src="./assets/screen.svg" /></div>
-            <div class="top-buttons" id="close"><img src="./assets/close-button.svg" /></div>
+            <div class="top-buttons" id="minimize"><i class="far fa-window-minimize"></i></div>
+            <div class="top-buttons" id="maximize"><i class="fas fa-window-maximize"></i></div>
+            <div class="top-buttons" id="close"><i class="fas fa-times"></i></div>
         </div>
     </header>
     <nav role="navigation" class="unselectable">

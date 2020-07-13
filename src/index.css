@@ -64,10 +64,14 @@ li {
   
 li a {
   color: #fff;
+  cursor: default;
 }
 
 li:hover {
   background: red;
+  cursor: default;
+}
+li:active{
   cursor: pointer;
 }
 
@@ -107,8 +111,8 @@ ul li ul li {
   
 }
 
-.top-buttons img{
-  width: 16px;
+.top-buttons{
+  font-size: 15px;
 }
 
 .top-buttons{
@@ -121,8 +125,16 @@ ul li ul li {
 .top-buttons:hover{
   background-color: grey;
 }
+.top-buttons:active{
+  background-color: rgb(141, 141, 141);
+}
 .top-buttons#close:hover{
   background-color:red;
+  color:#fff;
+}
+.top-buttons#close:active{
+  background-color:rgb(236, 0, 0);
+  color: #fff;
 }
 .buttons-group {
   z-index: 3;

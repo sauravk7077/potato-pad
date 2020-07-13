@@ -3,15 +3,16 @@ const remote = require('electron').remote;
 let maxBtn = document.getElementById('maximize');
 
 function maximize() {
-    console.log(remote.getCurrentWindow().isMaximized());
+    let itag = document.createElement('i');
+    maxBtn.getElementsByTagName('svg')[0].remove();
     if(remote.getCurrentWindow().isMaximized()){
-        console.log("D");
         remote.getCurrentWindow().unmaximize();
-        maxBtn.getElementsByTagName('img')[0].src = "./assets/square.svg";
+        itag.classList.add('fas', 'fa-window-maximize');
     }else{
         remote.getCurrentWindow().maximize();
-        maxBtn.getElementsByTagName('img')[0].src = "./assets/screen.svg";
+        itag.classList.add('fas', 'fa-window-restore');
     }
+    maxBtn.append(itag);
 }
 
 

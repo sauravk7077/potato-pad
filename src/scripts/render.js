@@ -173,9 +173,10 @@ function setWindowTitle(title='Untitled') {
     windowTitle.innerText = titlediv.innerText + " - Potato Pad";
 }
 
+function init() {
+    setWindowTitle();
+    textContainer.style.overflowWrap = "normal";
+}
 
-setWindowTitle();
-textContainer.addEventListener('blur',()=>{
-    textContainer.focus();
-});
+init();
 
