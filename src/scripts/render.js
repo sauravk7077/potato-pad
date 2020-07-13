@@ -34,21 +34,28 @@ document.getElementById('delete').addEventListener('click', deleteSelected);
 
 document.getElementById('word-wrap').addEventListener('click', changeWordWrap);
 
+//About Menu
+
+document.getElementById('about').addEventListener('click', showAbout);
+
 // File Functions
 
 async function openFile() {
     let value = await dialog.showOpenDialog(remote.getCurrentWindow());
     filepath = value.filePaths[0];
     textContainer.value = "";
-    let rs = fs.createReadStream(filepath);
-    setWindowTitle(path.win32.basename(filepath));
+    openFiles(filepath);
+}
+
+async function openFiles(pathtoFile) {
+    let rs = fs.createReadStream(pathtoFile);
+    setWindowTitle(path.win32.basename(pathtoFile));
     rs.on('data', (d) => {
         textContainer.value += d;
     });
     rs.on('end', ()=> {
         rs.close();
     });
-    
 }
 
 function newFile() {
@@ -73,8 +80,6 @@ async function save() {
     {
         saveFile();
     }
-
-
 
 }
 
@@ -166,6 +171,15 @@ function changeWordWrap() {
         textContainer.style.wordWrap = "break-word";
 }
 
+//About Functions
+
+function showAbout() {
+    console.log('Successfully entered');
+    createWindow(600, 400, true, 'about.html', false);
+}
+
+//Others
+
 function setWindowTitle(title='Untitled') {
     let titlediv = document.getElementById('title');
     let windowTitle = document.getElementById('window-title');
@@ -174,8 +188,16 @@ function setWindowTitle(title='Untitled') {
 }
 
 function init() {
-    setWindowTitle();
+    
     textContainer.style.overflowWrap = "normal";
+    var filearg = remote.process.argv[1];
+    
+    if(fs.existsSync(filearg) && fs.lstatSync(filearg).isFile()){
+        setWindowTitle(path.win32.basename(filearg));
+        openFiles(filearg);
+    }else{
+        setWindowTitle();
+    }
 }
 
 init();

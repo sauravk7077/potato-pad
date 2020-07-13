@@ -7,21 +7,28 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
   app.quit();
 }
 
-const createWindow = () => {
+const createWindow = (minw= 800, minh=600, nodeInt = true, file='index.html', devtool=true) => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    minWidth: 800,
-    minHeight: 600,
+    minWidth: minw,
+    minHeight: minh,
+    width: minw,
+    height: minh,
     frame: false,
     webPreferences:{
-      nodeIntegration: true,
-      enableRemoteModule: true
-      //devTools: false
+      nodeIntegration: nodeInt,
+      enableRemoteModule: true,
+      devTools: devtool
     }
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  mainWindow.loadFile(path.join(__dirname, file));
+
+  mainWindow.webContents.on('new-window', function(e, url) {
+    e.preventDefault();
+    require('electron').shell.openExternal(url);
+});
 
 };
 

@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>About</title>
+    <title>About</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Luckiest+Guy&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
     <script src="../node_modules/@fortawesome/fontawesome-free/js/all.js"></script>
     <style>
-        body{
+        *{
             margin: 0;
+            text-decoration: none;
+            font-family: 'Josefin Sans', sans-serif;
+            pointer-events: visibleFill;
         }
         .flex-box{
             display: flex;
@@ -15,8 +19,62 @@
             justify-content: space-between;
             height:400px;
         }
+        .title{
+            margin-top: 20px;
+            font-size: xx-large;
+            font-family: 'Luckiest Guy', cursive;
+        }
+        .links{
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .links .twitter, .links .github{
+            display: flex;
+            flex-basis: 200px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .twitter {
+            border: 2px solid #00acee;
+        }
+        .twitter:hover{
+            border: 2px solid #029ad6;
+        }
+        .twitter a{
+            color: #00acee;
+            font-size: medium;
+        }
+        .twitter:hover a{
+            color: #029ad6;
+        }
+        .github{
+            border: 2px solid #211F1F;
+        }
+        .github a{
+            color: #211F1F;
+            font-size: medium;
+        }
+        .github:hover{
+            border: 2px solid #585454;
+        }
+        .github:hover a{
+            color: #585454;
+        }
         .content{
+            flex-basis: 250px;
+        }
+        #close{
+            margin: 20px;
+            color: red;
             text-align: center;
+            cursor: pointer;
+        }
+        #close:hover{
+            color: rgb(219, 0, 0);
         }
     </style>
 </head>
@@ -26,10 +84,23 @@
 			Potato Pad
 		</div>
 		<div class="content">
-			<div class="about">Potato Pad is a simple text editor made using <em>NodeJs</em> and <em>electronJs</em></div>
-			<div class="twitter"><a href="#"><i class="fab fa-twitter"></i>Twitter</a></div>
-			<div class="github"><a href="#"><i class="fab fa-github"></i>GitHub</a></div>
+            <div class="about">Potato Pad is a simple text editor made using 
+                <em><a href="https://nodejs.org/en/" target="_blank">NodeJs</a></em> and 
+                <em><a href="https://www.electronjs.org/" target="_blank">electronJs</a></em>.
+                <br/>
+                All icons are by <a href="https://fontawesome.com/" target="_blank">Font Awesome</a>
+            </div>
+            <div class="links">
+                <div class="twitter"><a href="https://twitter.com/sauravk7077" target="_blank"><i class="fab fa-twitter"></i>@sauravk7077</a></div>
+                <div class="github"><a href="https://github.com/sauravk7077" target="_blank"><i class="fab fa-github"></i>@sauravk7077</a></div>
+            </div>
+            <div id="close"><i class="fas fa-times"></i> Close this window</div>
 		</div>
-	</div>
+    </div>
+    <script defer>
+        document.getElementById('close').addEventListener('click', ()=>{
+            close();
+        });
+    </script>
 </body>
 </html>
